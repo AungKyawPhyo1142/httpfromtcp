@@ -7,6 +7,22 @@ import (
 	"strings"
 )
 
+/*
+
+	NOTES:
+
+	TCP:
+		send data packets from one computer to another and wait for ack,
+		it also wait for connection 'handshake' before the data can be sent
+
+	UDP:
+		just yeet out the data packets whether you have connection 'handshake' or not
+		it also does not wait for ack. and you have to implement all the sending strategies,
+		how to reconstruct it and how to handle it if a packet is missing etc.
+		But it is more performant than TCP since it does not need to wait for ack.
+
+*/
+
 func getLinesChannel(f io.ReadCloser) <-chan string {
 	c := make(chan string)
 	go func() {
